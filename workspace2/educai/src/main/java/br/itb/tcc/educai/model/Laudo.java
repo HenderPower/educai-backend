@@ -1,7 +1,5 @@
 package br.itb.tcc.educai.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Transient;
 import org.hibernate.type.descriptor.jdbc.VarcharJdbcType;
 import jakarta.persistence.*;
 
@@ -117,9 +115,7 @@ public class Laudo {
         return mensagemErro;
     }
 
-    public void setMensagemErro(String mensagemErro) {
-        this.mensagemErro = mensagemErro;
-    }
+
 
     @Override
     public boolean equals(Object o) {

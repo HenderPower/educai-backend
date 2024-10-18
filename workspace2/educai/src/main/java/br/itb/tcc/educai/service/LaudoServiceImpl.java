@@ -20,7 +20,7 @@ public class LaudoServiceImpl implements LaudoService {
     }
     @Override
     @Transactional
-    public Laudo salvarLaudo(Laudo laudo) {// mudar pra true
+    public Laudo salvarLaudo(Laudo laudo) {
         if(!laudo.validarLaudo()){
             throw new BadRequest(laudo.getMensagemErro());
         }
@@ -45,11 +45,15 @@ public class LaudoServiceImpl implements LaudoService {
             }
             Laudo laudoBd = laudoRepository.findById(id).get();
             //
-            laudoBd.setCod_cid(laudo.getCod_cid());
+            laudoBd.setCod_laudo(laudoBd.getCod_laudo());
             laudoBd.setNome_laudo(laudo.getNome_laudo());
             laudoBd.setTipo_defic(laudo.getTipo_defic());
             laudoBd.setObs_laudo(laudo.getObs_laudo());
             laudoBd.setData_laudo(laudo.getData_laudo());
+            laudoBd.setRm_aluno(laudo.getRm_aluno());
+            laudoBd.setCod_prof(laudo.getCod_prof());
+
+
             return laudoRepository.save(laudoBd);  // save : Update para objetos já existentes no Banco de dados
 
         }catch (Exception ex){
